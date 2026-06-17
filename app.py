@@ -81,6 +81,17 @@ def put_data():
     connection.close()
     return jsonify({"message": "Data updated successfully!"}), 200
 
+@app.route("/delete_data",methods=["DELETE"])
+def delete_data():
+    student_id = request.json['student_id']
+    connection = get_db_connection()
+    cur = connection.cursor()
+    cur.execute("DELETE FROM student_table WHERE student_id = %s",(student_id,))
+    connection.commit()
+    cur.close()
+    connection.close()
+    return jsonify({"message": "Data deleted successfully!"}), 200
+
 
 if __name__ == "__main__":
     app.run(debug=True)
