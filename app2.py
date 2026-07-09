@@ -12,7 +12,7 @@ bcrypt = Bcrypt(app)
 DB_HOST = "localhost"
 DB_NAME = "postgres"
 DB_USER = "postgres"
-DB_PASSWORD = "1616"
+DB_PASSWORD = "Mallikasulu"
 
 def get_db_connection():
     return psycopg2.connect(
@@ -61,7 +61,7 @@ create_users_table()
 create_note_table()
 
 
-SECRET_KEY = " this is mmy kleeeey"
+SECRET_KEY = " this is my key"
 
 def create_jwt(user_id, username):
 
@@ -114,7 +114,7 @@ def signup():
 @app.route('/login' , methods =['POST'])
 def login():
     email = request.json['email']
-    password = request.json['password'] #praveen123
+    password = request.json['password']
     
     if not email  or not password:
         return jsonify({"error":"All fields are required"}),400
